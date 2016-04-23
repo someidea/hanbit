@@ -17,15 +17,17 @@ public class GradeMain {
 	public static void main(String[] args) {
 		//----- 변수 선언 영역 -----
 		Scanner scanner = new Scanner(System.in);
-		Grade grade = new Grade();
-		int total = 0;
-		String name = "";
+		GradeBean grade = new GradeBean();
+		GradeService service = new GradeServiceByHanbitImpl();
 		//----- 파라미터 입력 영역 -----
-		System.out.println("이름 : [ ], 국어 : [ ], 영어 : [ ], 수학 : [ ]");
-		name = scanner.next();
+		System.out.println("이름 : [ ], 국어 : [ ], 영어 : [ ], 수학 : [ ], 자바 : [ ]");
 		//----- 메소드 호출 -----
-		total = grade.getTotal(scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+		grade.setName(scanner.next());
+		grade.setKor(scanner.nextInt());
+		grade.setEng(scanner.nextInt());
+		grade.setMath(scanner.nextInt());
+		grade.setJava(scanner.nextInt());
 		//----- 리턴값 출력 영역 -----
-		System.out.println(name+"의 총점은 "+total+"점 이고, 평균은 "+grade.getAvg(total)+"이다.");
+		System.out.println(grade.getName()+" : "+service.getGrade(grade)+"학점");
 	}
 }
